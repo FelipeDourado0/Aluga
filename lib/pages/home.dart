@@ -39,23 +39,22 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   icon: Icon(
                     Icons.house,
                     size: 50.0,
-                    color: Colors.greenAccent.shade400,
+                    color: const Color.fromARGB(255, 0, 230, 118),
                   ),
                   style: ElevatedButton.styleFrom(
                     onPrimary: Colors.black, // muda a cor das letras do botao
                     primary: Colors.white,
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(100.0)),
-                      side: BorderSide(color: Colors.green, width: 9),
+                      side: BorderSide(color: Color.fromARGB(255, 0, 230, 118), width: 9),
                     ),
                     textStyle: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
-
-                       Navigator.push(
-                       context,
-                       MaterialPageRoute(builder: (context) => const Pag2()),
-            );
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Pag2()),
+                    );
                   },
                 ),
               ),
@@ -68,7 +67,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   icon: Icon(
                     Icons.list,
                     size: 50,
-                    color: Colors.greenAccent.shade400,
+                    color: const Color.fromARGB(255, 0, 230, 118),
                   ),
                   style: ElevatedButton.styleFrom(
                     onPrimary: Colors.black, // muda a cor das letras do botao
