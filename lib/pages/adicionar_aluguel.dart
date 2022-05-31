@@ -1,12 +1,13 @@
+import 'dart:ui';
+
 import 'package:aluga/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+//final margem = largura_Tela - 91,3%;
+
 class Pag2 extends StatelessWidget {
   // const Pag2({Key? key}) : super(key: key);
-  //https://www.alura.com.br/artigos/criando-formulario-com-flutter?gclid=Cj0KCQjw1tGUBhDXARIsAIJx01n3MdC-Vt39OZEosWNOB4VYNAkJJrkE6v5GM0IDdyJsirgyQH5UndUaAqlhEALw_wcB
-  //https://www.alura.com.br/artigos/criando-formulario-com-flutter?gclid=Cj0KCQjw1tGUBhDXARIsAIJx01n3MdC-Vt39OZEosWNOB4VYNAkJJrkE6v5GM0IDdyJsirgyQH5UndUaAqlhEALw_wcB
-  //https://www.alura.com.br/artigos/criando-formulario-com-flutter?gclid=Cj0KCQjw1tGUBhDXARIsAIJx01n3MdC-Vt39OZEosWNOB4VYNAkJJrkE6v5GM0IDdyJsirgyQH5UndUaAqlhEALw_wcB
   //https://www.alura.com.br/artigos/criando-formulario-com-flutter?gclid=Cj0KCQjw1tGUBhDXARIsAIJx01n3MdC-Vt39OZEosWNOB4VYNAkJJrkE6v5GM0IDdyJsirgyQH5UndUaAqlhEALw_wcB
 
   final TextEditingController _controladorLocal = TextEditingController();
@@ -19,78 +20,248 @@ class Pag2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ///////////////////////////adicionar funcao de rolar a pagina///////////////////////////////////////////
+    final double largura_Tela = MediaQuery.of(context).size.width;
+    final double altura_Tela = MediaQuery.of(context).size.height;
+
+    final double largura_Botao = largura_Tela * 0.365; //63,5%
+    final double altura_Botao = altura_Tela * 0.0683; //93,17%
+    final double altura_AppBar = altura_Tela * 0.1292;
+    final double margem_Lateral = largura_Tela * 0.087;
+    final double tamanho_Texto = altura_Tela * 0.0175; //98,125%
+    final double texto_Botao = altura_Tela * 0.03; //97%
+    //final double margem_Cima = altura_Tela * 0.042; //-95,8%
+    //final double margemEntreCampos = altura_Tela * 0.0261; //-97,39%
+    final ButtonStyle style =
+        ElevatedButton.styleFrom(textStyle: TextStyle(fontSize: tamanho_Texto));
+    final double redondo_Botao = 100;
+    final double grossura_Botao = altura_Botao * 0.05; //95%
+
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: altura_AppBar,
         title: const Text('CRIAR ALUGUEL'),
       ),
-      body: Center(
+      body: Padding(
+        padding: EdgeInsets.all(margem_Lateral),
         child: Column(
           children: <Widget>[
             TextFormField(
-            decoration: const InputDecoration(
-              hintText: 'Novo',
-              labelText: 'Local',
-            ),
-            style: TextStyle(
-              color: Colors.greenAccent[600],
-            ),
-            validator: (String? value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-            TextField(
               controller: _controladorLocal,
-              
-            ), //Local
-            TextField(
-              controller: _controladorCep,
-            ), //CEP
-            TextField(
-              controller: _controladorUf,
-            ), //UF
-            TextField(
-              controller: _controladorLogradouro,
-            ), //Nome logradouro
-            TextField(
-              controller: _controladorBairro,
-            ), //Bairro/Distrito
-            TextField(
-              controller: _controladorResidencia,
-            ), //tipo residencia
-            TextField(
-              controller: _controladorId,
-            ), //identificador unico
-
-            const SizedBox(height: 30),
-
-            ElevatedButton(
-              child: Text('VOLTAR'),
-              onPressed: () {},
-            ),
-
-            const SizedBox(height: 30),
-
-            ElevatedButton(
-              child: Text('CONTINUAR'),
-              onPressed: () {
-                final String local = _controladorLocal.text;
-                final double cep = double.parse(_controladorCep.text);
-                final String uf = _controladorUf.text;
-                final String logradouro = _controladorLogradouro.text;
-                final String bairro = _controladorBairro.text;
-                final String tp_Residencia = _controladorResidencia.text;
-                final int id = int.parse(_controladorId.text);
-
-                final Formulario cadastro = Formulario(
-                    local, cep, uf, logradouro, bairro, tp_Residencia, id);
-                print(cadastro);
+              decoration: InputDecoration(
+                hintText: 'Novo',
+                labelText: 'Local',
+                labelStyle: TextStyle(
+                    color: Color.fromARGB(255, 18, 199, 121),
+                    fontSize: tamanho_Texto),
+              ), //Local
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return 'Insira algo. Campo obrigatório.';
+                } else {
+                  return null;
+                }
               },
             ),
+
+            Padding(
+              padding: const EdgeInsets.only(right: 150),
+              child: TextFormField(
+                controller: _controladorCep,
+                decoration: InputDecoration(
+                    hintText: '00000-000',
+                    labelText: 'CEP',
+                    labelStyle: TextStyle(
+                        color: Color.fromARGB(255, 18, 199, 121),
+                        fontSize: tamanho_Texto)),
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Insira algo. Campo obrigatório.';
+                  } else {
+                    return null;
+                  }
+                },
+              ), //CEP
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(left: 200),
+              child: TextFormField(
+                controller: _controladorUf,
+                decoration: InputDecoration(
+                    hintText: 'XX',
+                    labelText: 'Localidade/UF',
+                    labelStyle: TextStyle(
+                        color: Color.fromARGB(255, 18, 199, 121),
+                        fontSize: tamanho_Texto)),
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Insira algo. Campo obrigatório.';
+                  } else {
+                    return null;
+                  }
+                },
+              ),
+            ), //UF
+
+            TextFormField(
+              controller: _controladorLogradouro,
+              decoration: InputDecoration(
+                  hintText: 'Nome',
+                  labelText: 'Logradouro/Nome',
+                  labelStyle: TextStyle(
+                      color: Color.fromARGB(255, 18, 199, 121),
+                      fontSize: tamanho_Texto)),
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return 'Insira algo. Campo obrigatório.';
+                } else {
+                  return null;
+                }
+              },
+            ), //Nome logradouro
+
+            TextFormField(
+              controller: _controladorBairro,
+              decoration: InputDecoration(
+                  hintText: 'Bairro',
+                  labelText: 'Bairro/Distrito',
+                  labelStyle: TextStyle(
+                      color: Color.fromARGB(255, 18, 199, 121),
+                      fontSize: tamanho_Texto)),
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return 'Insira algo. Campo obrigatório.';
+                } else {
+                  return null;
+                }
+              },
+            ), //Bairro/Distrito
+
+            TextFormField(
+              controller: _controladorResidencia,
+              decoration: InputDecoration(
+                  hintText: 'Tipo',
+                  labelText: 'Tipo de Residencia',
+                  labelStyle: TextStyle(
+                      color: Color.fromARGB(255, 18, 199, 121),
+                      fontSize: tamanho_Texto)),
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return 'Insira algo. Campo obrigatório.';
+                } else {
+                  return null;
+                }
+              },
+            ), //tipo residencia
+
+            TextFormField(
+              controller: _controladorId,
+              decoration: InputDecoration(
+                  hintText: 'ID',
+                  labelText: 'Identificador Único',
+                  labelStyle: TextStyle(
+                      color: Color.fromARGB(255, 18, 199, 121),
+                      fontSize: tamanho_Texto)),
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return 'Insira algo. Campo obrigatório.';
+                } else {
+                  return null;
+                }
+              },
+            ), //identificador unico
+
+            const SizedBox(height: 20),
+
+            Container(
+              width:
+                  largura_Botao, //tem que ser determinado pelo tamanho do texto 20px e do icone 50/60 juntos
+              height: altura_Botao, //altura (da tela) - 90,625%
+              child: ElevatedButton(
+                child: const Text('VOLTAR'), //aplica o texto do botão
+                style: ElevatedButton.styleFrom(
+                  //estilo dos componentes do botão
+                  onPrimary: Colors.black, // muda a cor das letras do botao
+                  primary: Colors.white, // muda a cor do fundo do botão
+                  shape: RoundedRectangleBorder(
+                    // arredonda as bordas
+                    borderRadius: BorderRadius.all(Radius.circular(
+                        redondo_Botao)), //(altura (do botão)) - 44%
+                    side: BorderSide(
+                        color: Color.fromARGB(255, 0, 230, 118),
+                        width:
+                            grossura_Botao), // coloca cor e determina a grossura da borda //(altura (do botão) - 95%)
+                  ),
+                  textStyle: TextStyle(
+                      fontSize: tamanho_Texto), //(altura (da tela)) - 96,875%
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+            const SizedBox(height: 30),
+
+            Container(
+              width:
+                  largura_Botao, //tem que ser determinado pelo tamanho do texto 20px e do icone 50/60 juntos
+              height: altura_Botao, //altura (da tela) - 90,625%
+              child: ElevatedButton(
+                child: const Text('CONTINUAR'), //aplica o texto do botão
+                style: ElevatedButton.styleFrom(
+                  //estilo dos componentes do botão
+                  onPrimary: Colors.white, // muda a cor das letras do botao
+                  primary: const Color.fromARGB(
+                      255, 0, 230, 118), // muda a cor do fundo do botão
+                  shape: RoundedRectangleBorder(
+                    // arredonda as bordas
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(redondo_Botao)),
+                    side: BorderSide(
+                        color: const Color.fromARGB(255, 0, 230, 118),
+                        width:
+                            grossura_Botao), // coloca cor e determina a grossura da borda //(altura (do botão) - 95%)
+                  ),
+                  textStyle: TextStyle(
+                      fontSize: tamanho_Texto), //(altura (da tela)) - 96,875%
+                ),
+
+                onPressed: () {
+                  final String local = _controladorLocal.text;
+                  final double cep = double.parse(_controladorCep.text);
+                  final String uf = _controladorUf.text;
+                  final String logradouro = _controladorLogradouro.text;
+                  final String bairro = _controladorBairro.text;
+                  final String tp_Residencia = _controladorResidencia.text;
+                  final int id = int.parse(_controladorId.text);
+
+                  final Formulario cadastro = Formulario(
+                      local, cep, uf, logradouro, bairro, tp_Residencia, id);
+                  print(cadastro);
+                },
+              ),
+            ),
+            //const ScrollView(scrollDirection: Axis.vertical, shrinkWrap: true, reverse: false,anchor: altura_Tela),
           ],
         ),
+
+        // ElevatedButton(
+        //   child: Text('CONTINUAR'),
+        //   onPressed: () {
+        //     final String local = _controladorLocal.text;
+        //     final double cep = double.parse(_controladorCep.text);
+        //     final String uf = _controladorUf.text;
+        //     final String logradouro = _controladorLogradouro.text;
+        //     final String bairro = _controladorBairro.text;
+        //     final String tp_Residencia = _controladorResidencia.text;
+        //     final int id = int.parse(_controladorId.text);
+
+        //     final Formulario cadastro = Formulario(
+        //         local, cep, uf, logradouro, bairro, tp_Residencia, id);
+        //     print(cadastro);
+        //   },
+        // ),
       ),
     );
   }
