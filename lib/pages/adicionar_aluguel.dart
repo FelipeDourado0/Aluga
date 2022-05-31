@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/atribuir_aluguel.dart';
-
+import 'package:aluga/pages/atribuir_aluguel.dart';
 class Pag2 extends StatelessWidget {
   const Pag2({Key? key}) : super(key: key); 
 

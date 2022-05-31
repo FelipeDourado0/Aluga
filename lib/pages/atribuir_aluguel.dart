@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 
 class Pag4 extends StatelessWidget {
   const Pag4({Key? key}) : super(key: key); 

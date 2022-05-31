@@ -1,9 +1,6 @@
-import 'package:aluga/main.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'adicionar_aluguel.dart';
-import 'meus_alugueis.dart';
+import 'package:aluga/pages/adicionar_aluguel.dart';
+import 'package:aluga/pages/meus_alugueis.dart';
 
 class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key? key, required this.title}) : super(key: key);
