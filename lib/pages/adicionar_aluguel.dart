@@ -26,8 +26,24 @@ class Pag2 extends StatelessWidget {
       body: Center(
         child: Column(
           children: <Widget>[
+            TextFormField(
+            decoration: const InputDecoration(
+              hintText: 'Novo',
+              labelText: 'Local',
+            ),
+            style: TextStyle(
+              color: Colors.greenAccent[600],
+            ),
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+          ),
             TextField(
               controller: _controladorLocal,
+              
             ), //Local
             TextField(
               controller: _controladorCep,
