@@ -1,3 +1,4 @@
+import 'package:aluga/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:aluga/pages/home.dart';
 
@@ -29,8 +30,7 @@ class MyApp extends StatelessWidget {
       title: 'Controle de Alugueis', //título da aplicação
       debugShowCheckedModeBanner: false, //Tira a Barrinha de debug da tela
       theme: ThemeData(primarySwatch: Colors.green), //Altera a cor principal
-      home:
-          const MyStatefulWidget(title: 'ESCOLHA UMA FUNÇÃO'), //título da tela
+      home: loginPage(),//título da tela
     );
   }
 }
