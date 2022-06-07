@@ -9,7 +9,9 @@ class Pag4 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Atribuir aluguel'),
+        centerTitle: true,
       ),
       body: Center(
         child: ElevatedButton(
