@@ -1,3 +1,4 @@
+import 'package:aluga/pages/cadastrar_perfil.dart';
 import 'package:aluga/pages/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -113,7 +114,7 @@ class loginPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => MyStatefulWidget(title: 'home',)),
+                        MaterialPageRoute(builder: (context) => cadastrar_perfil()),
                       );
                 },
               ),
