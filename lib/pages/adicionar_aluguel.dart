@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:aluga/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'atribuir_aluguel.dart';
 
 class Pag2 extends StatelessWidget {
   //https://www.alura.com.br/artigos/criando-formulario-com-flutter?gclid=Cj0KCQjw1tGUBhDXARIsAIJx01n3MdC-Vt39OZEosWNOB4VYNAkJJrkE6v5GM0IDdyJsirgyQH5UndUaAqlhEALw_wcB
@@ -25,7 +26,7 @@ class Pag2 extends StatelessWidget {
     final double altura_AppBar = altura_Tela * 0.1292;
     final double margem_Lateral = largura_Tela * 0.086;
     final double margem_Vertical = altura_Tela * (0.041 / 2);
-    final double tamanho_Texto = altura_Tela * 0.0175; //98,125%
+    final double tamanho_Texto = altura_Tela * 0.0195; //98,125%
     final double texto_Botao = altura_Tela * 0.03; //97%
     final ButtonStyle style =
         ElevatedButton.styleFrom(textStyle: TextStyle(fontSize: tamanho_Texto));
@@ -35,8 +36,10 @@ class Pag2 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         ///// tirar o leading
+        automaticallyImplyLeading: false,
         toolbarHeight: altura_AppBar,
         title: const Text('CRIAR ALUGUEL'),
+        centerTitle: true,
       ),
       body: ListView(
         shrinkWrap: true,
@@ -84,7 +87,7 @@ class Pag2 extends StatelessWidget {
               Padding(padding: EdgeInsets.all(margem_Lateral / 3)),
 
               Expanded(
-                flex: 5,
+                flex: 6,
                 child: TextFormField(
                   controller: _controladorUf,
                   decoration: InputDecoration(
@@ -246,6 +249,11 @@ class Pag2 extends StatelessWidget {
                       final Formulario cadastro = Formulario(local, cep, uf,
                           logradouro, bairro, tp_Residencia, id);
                       print(cadastro);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Pag4()),
+                      );
                     },
                   ),
                 ),
