@@ -3,15 +3,7 @@ import 'package:aluga/pages/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class loginPage extends StatelessWidget {
-  //const Pag3({Key? key}) : super(key: key);
-  final TextEditingController _controladorLocal = TextEditingController();
-  final TextEditingController _controladorCep = TextEditingController();
-  final TextEditingController _controladorUf = TextEditingController();
-  final TextEditingController _controladorLogradouro = TextEditingController();
-  final TextEditingController _controladorBairro = TextEditingController();
-  final TextEditingController _controladorResidencia = TextEditingController();
-  final TextEditingController _controladorId = TextEditingController();
+class loginPage extends StatelessWidget {  
   @override
   Widget build(BuildContext context) {
     final double largura_Tela = MediaQuery.of(context).size.width;
@@ -21,7 +13,7 @@ class loginPage extends StatelessWidget {
     final double altura_Botao = altura_Tela * 0.0683; //93,17%
     final double altura_AppBar = altura_Tela * 0.1292;
     final double margem_Lateral = largura_Tela * 0.087;
-    final double tamanho_Texto = altura_Tela * 0.0175; //98,125%
+    final double tamanho_Texto = altura_Tela * 0.0195;
     final double texto_Botao = altura_Tela * 0.03; //97%
     //final double margem_Cima = altura_Tela * 0.042; //-95,8%
     //final double margemEntreCampos = altura_Tela * 0.0261; //-97,39%
@@ -31,7 +23,8 @@ class loginPage extends StatelessWidget {
     final double grossura_Botao = altura_Botao * 0.05; //95%
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('LOGIN'),
+        centerTitle: true,
         toolbarHeight:
               altura_AppBar, // altura (da tela) - 90,625%/////////////////////////////////////////////
       ),
@@ -44,7 +37,7 @@ class loginPage extends StatelessWidget {
                 hintText: 'Email',
                 labelText: 'Email',
                 labelStyle: TextStyle(
-                    color: Color.fromARGB(255, 18, 199, 121), fontSize: 20),
+                    color: Color.fromARGB(255, 18, 199, 121), fontSize: tamanho_Texto),
               ), //Local
             ),
             TextFormField(
@@ -52,7 +45,8 @@ class loginPage extends StatelessWidget {
                 hintText: 'Senha',
                 labelText: 'Senha',
                 labelStyle: TextStyle(
-                    color: Color.fromARGB(255, 18, 199, 121), fontSize: 20),
+                    color: Color.fromARGB(255, 18, 199, 121),
+                    fontSize: tamanho_Texto),
               ), //Local
             ),
             const SizedBox(height: 60),
