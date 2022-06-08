@@ -55,7 +55,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         appBar: AppBar(
           toolbarHeight:
               altura_AppBar, // altura (da tela) - 90,625%////////////////////////////////////////////////pegar na sala 109 na minha maquina
-          title: Text(widget.title),
+          title: Text("HOME"),
           ////////////////////////////////////////////////////////////////////////////titleTextStyle: const TextStyle(), //aplica o título
           centerTitle: true, // centraliza o título
           //colocar o tamanho do título //(altura (da tela) - 96,875%)
