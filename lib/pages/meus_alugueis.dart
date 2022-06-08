@@ -29,7 +29,10 @@ class Pag3 extends StatelessWidget {
     final double grossura_Botao = altura_Botao * 0.05; //95%
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Atribuir aluguel'),
+        centerTitle: true,
+        toolbarHeight: altura_AppBar,
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
