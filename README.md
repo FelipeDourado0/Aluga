@@ -1,4 +1,4 @@
-# aluga
+# Aluga
 
 A new Flutter project.
 
