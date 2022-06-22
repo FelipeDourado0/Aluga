@@ -24,7 +24,11 @@ samples, guidance on mobile development, and a full API reference.
 - https://next.canvanizer.com/canvas/r6FdPp0J3Tyfq
 
 ## Elevator Pitch
-- ...
+- O “Gerenciador de Alugueis” é um app feito para melhorar a comunicação entre o
+locador e o locatário. Nele o locador cadastra seu imóvel, e atribui a ele a
+quantidade de locadores que for necessário com o intuito de, em tempo real, receber
+dados como: contas a pagar, comprovantes, valores. Gerando assim um um
+ambiente mais informativo às duas personas e facilitando seu dia a dia.
 
 ## URL Vídeo (YouTube)
-- ...
+- https://youtu.be/x2H5Y_g3Biw
